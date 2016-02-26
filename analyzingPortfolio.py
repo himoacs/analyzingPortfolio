@@ -136,6 +136,7 @@ plt.grid()
 net_summary = pf_stats('20160219',transactions,min_date,'snapshot')
 net_summary = net_summary[net_summary['stock']!='cash']
 net_summary = net_summary.groupby(['stock']).sum()
+net_summary['net_change'] = 100*net_summary['net']/net_summary['cost']
 
 # Define a new column to determine whether net_change is positive or negative
 # This value will be used for determinning color of the bars (green if positive, red if negative)
